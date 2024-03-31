@@ -2,10 +2,7 @@ package com.std.ec.model.entity;
 
 // estas importaciones son Automaticas:
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 /* Estas anotaciones de Lombok generan automáticamente métodos getter, setter, toString(), y un
 constructor con todos los argumentos, uno sin argumentos y el método toString() para la clase.
 Esto reduce la cantidad de codigo que necesitas escribir manualmente. */

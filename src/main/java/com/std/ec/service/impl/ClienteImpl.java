@@ -1,6 +1,7 @@
 package com.std.ec.service.impl;
 
 import com.std.ec.model.dao.ClienteDao;
+import com.std.ec.model.dto.ClienteDto;
 import com.std.ec.model.entity.Cliente;
 import com.std.ec.service.ICliente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,14 @@ public class ClienteImpl implements ICliente { // Importar los metodos ICliente 
 
     @Transactional // elegir de springframework
     @Override
-    public Cliente save(Cliente cliente) {
+    public Cliente save(ClienteDto clienteDto) {
+        Cliente cliente = Cliente.builder()
+                .idCliente(clienteDto.getIdCliente())
+                .nombre(clienteDto.getNombre())
+                .apellido(clienteDto.getApellido())
+                .correo(clienteDto.getCorreo())
+                .fechaRegistro(clienteDto.getFechaRegistro())
+                .build();
         return clienteDao.save(cliente);
     }
 
@@ -31,6 +39,8 @@ public class ClienteImpl implements ICliente { // Importar los metodos ICliente 
         clienteDao.delete(cliente);
     }
 }
+
+
 
 /* _ @Transactional(readOnly = true) es importante en el método findById() porque indica que
    la operación se puede realizar en modo de solo lectura, lo que puede ser más eficiente y
