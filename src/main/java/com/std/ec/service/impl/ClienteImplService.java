@@ -3,13 +3,13 @@ package com.std.ec.service.impl;
 import com.std.ec.model.dao.ClienteDao;
 import com.std.ec.model.dto.ClienteDto;
 import com.std.ec.model.entity.Cliente;
-import com.std.ec.service.ICliente;
+import com.std.ec.service.IClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service // importante porque ahora automaticamente detecta componentes de Spring.
-public class ClienteImpl implements ICliente { // Importar los metodos ICliente automaticamente haciendo selct del foco rojo.
+public class ClienteImplService implements IClienteService { // Importar los metodos ICliente automaticamente haciendo selct del foco rojo.
 
     @Autowired
     private ClienteDao clienteDao;
@@ -37,6 +37,11 @@ public class ClienteImpl implements ICliente { // Importar los metodos ICliente 
     @Override
     public void delete(Cliente cliente) {
         clienteDao.delete(cliente);
+    }
+
+    @Override
+    public boolean existsByid(Integer id) {
+        return clienteDao.existsById(id);
     }
 }
 
