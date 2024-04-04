@@ -1,5 +1,10 @@
 package com.std.ec.model.entity;
 
+// ---------------------------
+// Aplicando LOMBOK en entidad
+// ---------------------------
+
+
 // estas importaciones son Automaticas:
 import jakarta.persistence.*;
 import lombok.*;

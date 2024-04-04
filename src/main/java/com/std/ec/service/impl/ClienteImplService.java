@@ -8,11 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service // importante porque ahora automaticamente detecta componentes de Spring.
 public class ClienteImplService implements IClienteService { // Importar los metodos ICliente automaticamente haciendo selct del foco rojo.
 
     @Autowired
     private ClienteDao clienteDao;
+
+    @Override
+    public List<Cliente> listAll() { // Para obtener toda la lista de los clientes.
+        return (List) clienteDao.findAll();
+    }
 
     @Transactional // elegir de springframework
     @Override

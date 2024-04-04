@@ -23,3 +23,44 @@ INSERT INTO clientes (nombre, apellido, correo, fecha_registro) VALUES('Carlos',
 INSERT INTO clientes (nombre, apellido, correo, fecha_registro) VALUES('Marcela', 'Sanchez', 'schMarce@itb.com', '2023-08-03');
 INSERT INTO clientes (nombre, apellido, correo, fecha_registro) VALUES('Ben', 'Tennyson', 'ben10@cn.com', '2023-08-04');
 ```
+
+## Arquitectura N-CAPAS
+
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/j2pHvdfB/n-capas.png' border='0' alt='n-capas'/></a>
+
+#####  JSON - Project
+```json
+{
+  "mensaje": "",
+  "object": [
+    {
+      "idCliente": 1,
+      "nombre": "Kevin",
+      "apellido": "rens",
+      "correo": "rens123@gmail.com",
+      "fechaRegistro": "2023-03-08T05:00:00.000+00:00"
+    },
+    {
+      "idCliente": 2,
+      "nombre": "Israel",
+      "apellido": "Inocente",
+      "correo": "israel123@gmail.com",
+      "fechaRegistro": "2023-03-08T05:00:00.000+00:00"
+    },
+    {
+      "idCliente": 3,
+      "nombre": "Messi",
+      "apellido": "rens",
+      "correo": "rens9256@gmail.com",
+      "fechaRegistro": "2023-02-28T05:00:00.000+00:00"
+    },
+    {
+      "idCliente": 4,
+      "nombre": "Leonar",
+      "apellido": "rens",
+      "correo": "rens1233@gmail.com",
+      "fechaRegistro": "2023-07-31T05:00:00.000+00:00"
+    }
+  ]
+}
+```

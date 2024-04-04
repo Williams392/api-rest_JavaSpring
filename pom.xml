@@ -51,6 +51,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Agregado manualmente desde la pagina springdoc openapi maven: https://springdoc.org/#getting-started  -->
+		<!-- Paso 2: recargar el pom para q deje de estar en rojo  -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

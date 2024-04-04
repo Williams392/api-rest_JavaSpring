@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1")
 public class ClienteController {
@@ -17,7 +19,29 @@ public class ClienteController {
     @Autowired
     private IClienteService clienteService;
 
-    @PostMapping("cliente")
+    @GetMapping("clientes") // Para obtener toda la lista de los clientes.
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> showAll() {
+        List<Cliente> getList = clienteService.listAll();
+
+        //if(getList == null)
+        if (getList.isEmpty()) { // isEmpty() para verificar si la lista está vacía -> mejor q null.
+            return new ResponseEntity<>(
+                    MensajeResponse.builder()
+                            .mensaje("No hay registro")
+                            .object(null)
+                            .build()
+                    , HttpStatus.OK);
+        }
+        return new ResponseEntity<>(
+                MensajeResponse.builder()
+                        .mensaje("")
+                        .object(getList) // Encaso si existe me manda mi -> getList
+                        .build()
+                , HttpStatus.OK);
+    }
+
+    @PostMapping("cliente") // post
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> create(@RequestBody ClienteDto clienteDto){
         Cliente clienteSave = null;
@@ -45,7 +69,7 @@ public class ClienteController {
         }
     }
 
-    @PutMapping("cliente/{id}")
+    @PutMapping("cliente/{id}") // put
     public ResponseEntity<?> update(@RequestBody ClienteDto clienteDto, @PathVariable Integer id){
         Cliente clienteUpdate = null;
 
@@ -98,9 +122,9 @@ public class ClienteController {
         }
     }
 
-    @GetMapping("cliente/{id}")
+    @GetMapping("cliente/{id}") // get
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> showById(@PathVariable Integer id){ // Obtener una lista
+    public ResponseEntity<?> showById(@PathVariable Integer id){
         Cliente cliente =  clienteService.findById(id);
 
         if(cliente == null) {
